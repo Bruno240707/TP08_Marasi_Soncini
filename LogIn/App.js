@@ -41,29 +41,26 @@ export default function App() {
         <Image source={require('./assets/Loog.png')} style={styles.logo} />
 
         <View style={styles.inputContainer}>
-          <Entypo name="user" size={20} color="#000" style={styles.icon} />
+          <Entypo name="user" size={20} style={styles.icon} />
           <TextInput
             placeholder="Ingrese su nombre de usuario"
             style={styles.input}
-            placeholderTextColor="#000"
           />
         </View>
 
         <View style={styles.inputContainer}>
-          <Entypo name="email" size={20} color="#000" style={styles.icon} />
+          <Entypo name="email" size={20} style={styles.icon} />
           <TextInput
             placeholder="Ingrese su mail"
             style={styles.input}
-            placeholderTextColor="#000"
           />
         </View>
 
         <View style={styles.inputContainer}>
-          <Entypo name="lock" size={20} color="#000" style={styles.icon} />
+          <Entypo name="lock" size={20} style={styles.icon} />
           <TextInput
             placeholder="Ingrese su contraseña"
             style={styles.input}
-            placeholderTextColor="#000"
           />
         </View>
 
@@ -86,10 +83,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   logo: {
-    width: 140,
-    height: 140,
-    resizeMode: 'contain',
     marginBottom: 100,
+    width: "45%",
+    height: "20%",
+    borderRadius: 25
   },
   inputContainer: {
     flexDirection: 'row',
@@ -97,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: '#0070f3',
+    borderColor: '#1359BF',
     paddingHorizontal: 10,
     paddingVertical: 8,
     marginBottom: 15,
@@ -112,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginButton: {
-    backgroundColor: '#1a2e5b',
+    backgroundColor: '#29426B',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
@@ -127,7 +124,7 @@ const styles = StyleSheet.create({
   },
   forgotPassword: {
     marginTop: 15,
-    color: '#4da6ff',
+    color: "#3C49D2",
     fontSize: 13,
   },
 });
