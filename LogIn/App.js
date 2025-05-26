@@ -43,15 +43,7 @@ export default function App() {
         <View style={styles.inputContainer}>
           <Entypo name="user" size={20} style={styles.icon} />
           <TextInput
-            placeholder="Ingrese su nombre de usuario"
-            style={styles.input}
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Entypo name="email" size={20} style={styles.icon} />
-          <TextInput
-            placeholder="Ingrese su mail"
+            placeholder="Company"
             style={styles.input}
           />
         </View>
@@ -59,7 +51,7 @@ export default function App() {
         <View style={styles.inputContainer}>
           <Entypo name="lock" size={20} style={styles.icon} />
           <TextInput
-            placeholder="Ingrese su contraseña"
+            placeholder="Contraseña"
             style={styles.input}
           />
         </View>
