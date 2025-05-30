@@ -9,14 +9,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
-import LogIn from './screens/logIn';
-import Perfil from './screens/Perfil';
-import DashboardsGen from './screens/DashboardsGen';
-import DashboardsInd from './screens/DashboardsInd';
+import LogIn from './screens/logIn'
+import Perfil from './screens/Perfil'
+import DashboardsGen from './screens/DashboardsGen'
+import DashboardsInd from './screens/DashboardsInd'
 
-const Stack = createNativeStackNavigator();
-
-const DashboardsGenStack = createNativeStackNavigator();
+const DashboardsGenStack = createNativeStackNavigator()
 const DashboardsGenScreen = () => {
   return (
     <DashboardsGenStack.Navigator>
@@ -25,7 +23,7 @@ const DashboardsGenScreen = () => {
   );
 };
 
-const DashboardsIndStack = createNativeStackNavigator();
+const DashboardsIndStack = createNativeStackNavigator()
 const DashboardsIndScreen = () => {
   return (
     <DashboardsIndStack.Navigator>
@@ -34,7 +32,7 @@ const DashboardsIndScreen = () => {
   );
 };
 
-const ProfileStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator()
 const ProfileStackScreen = () => {
   return (
     <ProfileStack.Navigator>
@@ -43,9 +41,9 @@ const ProfileStackScreen = () => {
   );
 };
 
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 const MyTabs = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
@@ -65,12 +63,12 @@ const MyTabs = () => {
         options={{ title: 'Perfil' }}
       />
     </Tab.Navigator>
-  );
-};
+  )
+}
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [appIsReady, setAppIsReady] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [appIsReady, setAppIsReady] = useState(false)
 
   useEffect(() => {
     async function prepare() {
@@ -80,34 +78,30 @@ export default function App() {
           ...MaterialIcons.font,
           ...FontAwesome.font,
         });
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 1000))
       } catch (e) {
-        console.warn(e);
+        console.warn(e)
       } finally {
-        setAppIsReady(true);
-        await SplashScreen.hideAsync();
+        setAppIsReady(true)
+        await SplashScreen.hideAsync()
       }
     }
-    prepare();
+    prepare()
   }, []);
 
   if (!appIsReady) {
-    return null;
+    return null
   }
 
   return (
     <>
       <StatusBar barStyle="light-content" />
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
           {!isLoggedIn ? (
-            <Stack.Screen name="Login">
-              {(props) => <LogIn {...props} setIsLoggedIn={setIsLoggedIn}/>}
-            </Stack.Screen>
+            <LogIn setIsLoggedIn={setIsLoggedIn}/>
           ) : (
-            <Stack.Screen name="Main" component={MyTabs} />
+            <MyTabs />
           )}
-        </Stack.Navigator>
       </NavigationContainer>
     </>
   );
