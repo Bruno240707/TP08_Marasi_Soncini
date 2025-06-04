@@ -1,14 +1,15 @@
-import Perfil from "./Perfil"
+import { SafeAreaView, Text } from 'react-native';
 
-const PerfilInfo = ({styles, nombre, telefono}) => {
-    return (
-        <>
-            <SafeAreaView style={styles.perfilContainer}>
-                <Text style={styles.h1}>PERFIL INFO</Text>
-                
-            </SafeAreaView>
-        </>
-    )
-}
+const PerfilInfo = ({ styles, route }) => {
+  const { nombre, telefono } = route.params;
 
-export default PerfilInfo
+  return (
+    <SafeAreaView style={styles.perfilContainer}>
+      <Text style={styles.h1}>PERFIL INFO</Text>
+      <Text style={styles.h1}>Nombre: {nombre}</Text>
+      <Text style={styles.h1}>Teléfono: {telefono}</Text>
+    </SafeAreaView>
+  );
+};
+
+export default PerfilInfo;

@@ -25,11 +25,6 @@ const DashboardsGenScreen = ({styles}) => {
       <DashboardsGenStack.Screen name="DashboardsGen">
         {() => <DashboardsGen styles={styles} />}
       </DashboardsGenStack.Screen>
-
-      <DashboardsGenStack.Screen name="PerfilInfo">
-        {() => <PerfilInfo styles={styles} />}
-      </DashboardsGenStack.Screen>
-
     </DashboardsGenStack.Navigator>
   );
 };
@@ -61,8 +56,13 @@ const ProfileStackScreen = ({styles}) => {
   return (
     <ProfileStack.Navigator>
       <ProfileStack.Screen name="Profile">
-        {() => <Perfil styles={styles} />}
+        {(props) => <Perfil {...props} styles={styles} />}
       </ProfileStack.Screen>
+
+      <ProfileStack.Screen name="PerfilInfo">
+        {(props) => <PerfilInfo {...props} styles={styles} />}
+      </ProfileStack.Screen>
+
     </ProfileStack.Navigator>
   )
 }
