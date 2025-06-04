@@ -20,7 +20,7 @@ const LogIn = ({ setIsLoggedIn, styles }) => {
           <Entypo name="user" size={20} style={styles.icon} />
           <TextInput
             placeholder="Company"
-            style={styles.input}
+            style={styles.inputLogIn}
             value={company}
             onChangeText={setCompany}
           />
@@ -30,7 +30,7 @@ const LogIn = ({ setIsLoggedIn, styles }) => {
           <Entypo name="lock" size={20} style={styles.icon} />
           <TextInput
             placeholder="Contraseña"
-            style={styles.input}
+            style={styles.inputLogIn}
             value={password}
             onChangeText={setPassword}
             secureTextEntry

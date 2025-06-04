@@ -7,60 +7,103 @@ import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
 
 // Screens
 import LogIn from './screens/logIn'
 import Perfil from './screens/Perfil'
 import DashboardsGen from './screens/DashboardsGen'
 import DashboardsInd from './screens/DashboardsInd'
+import TiempoReal from './screens/TiempoReal';
+import PerfilInfo from './screens/PerfilInfo';
+//
 
 const DashboardsGenStack = createNativeStackNavigator()
-const DashboardsGenScreen = () => {
+const DashboardsGenScreen = ({styles}) => {
   return (
     <DashboardsGenStack.Navigator>
-      <DashboardsGenStack.Screen name="DashboardsGen" component={DashboardsGen} />
+      <DashboardsGenStack.Screen name="DashboardsGen">
+        {() => <DashboardsGen styles={styles} />}
+      </DashboardsGenStack.Screen>
+
+      <DashboardsGenStack.Screen name="PerfilInfo">
+        {() => <PerfilInfo styles={styles} />}
+      </DashboardsGenStack.Screen>
+
     </DashboardsGenStack.Navigator>
   );
 };
 
+const TiempoRealStack = createNativeStackNavigator()
+const TiempoRealScreen = ({styles}) => {
+  return (
+    <TiempoRealStack.Navigator>
+      <TiempoRealStack.Screen name="TiempoReal">
+        {() => <TiempoReal styles={styles} />}
+      </TiempoRealStack.Screen>
+    </TiempoRealStack.Navigator>
+  )
+}
+
 const DashboardsIndStack = createNativeStackNavigator()
-const DashboardsIndScreen = () => {
+const DashboardsIndScreen = ({styles}) => {
   return (
     <DashboardsIndStack.Navigator>
-      <DashboardsIndStack.Screen name="DashboardsInd" component={DashboardsInd} />
+      <DashboardsIndStack.Screen name="DashboardsInd">
+        {() => <DashboardsInd styles={styles} />}
+      </DashboardsIndStack.Screen>
     </DashboardsIndStack.Navigator>
-  );
-};
+  )
+}
 
 const ProfileStack = createNativeStackNavigator()
-const ProfileStackScreen = () => {
+const ProfileStackScreen = ({styles}) => {
   return (
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name="Profile" component={Perfil} />
+      <ProfileStack.Screen name="Profile">
+        {() => <Perfil styles={styles} />}
+      </ProfileStack.Screen>
     </ProfileStack.Navigator>
-  );
-};
+  )
+}
 
 SplashScreen.preventAutoHideAsync()
 
 const Tab = createBottomTabNavigator()
-const MyTabs = () => {
+const MyTabs = ({styles}) => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="DashboardsGenTab"
-        component={DashboardsGenScreen}
-        options={{ title: 'DashboardsGen' }}
+        children={() => <DashboardsGenScreen styles={styles} />}
+        options={{ title: 'DashboardsGen',
+        tabBarIcon: () => (
+          <Ionicons name='albums-outline' size={24}></Ionicons>
+        ) }}
       />
       <Tab.Screen
         name="DashboardsIndTab"
-        component={DashboardsIndScreen}
-        options={{ title: 'DashboardsInd' }}
+        children={() => <DashboardsIndScreen styles={styles} />}
+        options={{ title: 'DashboardsInd',
+        tabBarIcon: () => (
+          <Ionicons name='reader-outline' size={24}></Ionicons>
+        ) }}
       />
       <Tab.Screen
         name="ProfileTab"
-        component={ProfileStackScreen}
-        options={{ title: 'Perfil' }}
+        children={() => <ProfileStackScreen styles={styles} />}
+        options={{ title: 'Perfil',
+        tabBarIcon: () => (
+          <Ionicons name='person-outline' size={24}></Ionicons>
+        ) }}
+      />
+      <Tab.Screen
+        name="TiempoRealTab"
+        children={() => <TiempoRealScreen styles={styles} />}
+        options={{ title: 'TiempoReal',
+        tabBarIcon: () => (
+          <Ionicons name='hourglass-outline' size={24}></Ionicons>
+        ) }}
       />
     </Tab.Navigator>
   )
@@ -102,7 +145,7 @@ export default function App() {
               styles={styles}
             />
           ) : (
-            <MyTabs />
+            <MyTabs styles={styles} />
           )}
       </NavigationContainer>
     </>
@@ -138,7 +181,7 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
-  input: {
+  inputLogIn: {
     flex: 1,
     color: '#000',
     fontSize: 16,
@@ -161,5 +204,61 @@ const styles = StyleSheet.create({
     marginTop: 15,
     color: '#3C49D2',
     fontSize: 13,
+  },
+  h1: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    fontSize: 16,
+    width: '90%',
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#1359BF',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  tiempoRealContainer: {
+    flex: 1,
+    backgroundColor: '#1B263B',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  dashboardsGenContainer: {
+    flex: 1,
+    backgroundColor: '#2D6A4F',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  dashboardsIndContainer: {
+    flex: 1,
+    backgroundColor: '#5F0F40',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  perfilContainer: {
+    flex: 1,
+    backgroundColor: '#3E3E3E',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
   },
 });
